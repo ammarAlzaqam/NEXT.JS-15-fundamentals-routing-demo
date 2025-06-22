@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 interface ReviewProps {
   params: Promise<{ productId: string; reviewId: string }>;
@@ -6,7 +6,10 @@ interface ReviewProps {
 
 export default async function Review({ params }: ReviewProps) {
   const { productId, reviewId } = await params;
-  if (parseInt(reviewId) > 1000) notFound();
+  if (parseInt(reviewId) > 1000) {
+    // noFound();
+    redirect("/products");
+  }
   return (
     <h1>
       Review {reviewId} for Product {productId}
