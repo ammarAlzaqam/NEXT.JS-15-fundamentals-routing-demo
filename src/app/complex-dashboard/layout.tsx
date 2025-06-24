@@ -5,6 +5,7 @@ interface ComplexDashboardLayoutProps {
   users: ReactNode;
   revenue: ReactNode;
   notification: ReactNode;
+  login: ReactNode;
 }
 
 export default function ComplexDashboardLayout({
@@ -12,8 +13,10 @@ export default function ComplexDashboardLayout({
   users,
   revenue,
   notification,
+  login,
 }: ComplexDashboardLayoutProps) {
-  return (
+  const isLoggedIn = true;
+  return isLoggedIn ? (
     <section>
       <div>{children}</div>
       <div className="flex mt-10 gap-5">
@@ -24,5 +27,7 @@ export default function ComplexDashboardLayout({
         <div className="flex grow">{notification}</div>
       </div>
     </section>
+  ) : (
+    login
   );
 }
